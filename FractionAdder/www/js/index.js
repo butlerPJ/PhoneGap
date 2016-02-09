@@ -1,6 +1,3 @@
-/*jshint browser:true */
-/*jshint devel:true */
-
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -30,8 +27,6 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        // add event listener to btnOk for click event
-        document.getElementById("btnOk").addEventListener('click', this.onGo, true);
     },
     // deviceready Event Handler
     //
@@ -46,26 +41,9 @@ var app = {
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
-       //
-
-
-
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-
-
-
         console.log('Received Event: ' + id);
-    },
-
-    onGo: function(e) {
-        // get reference to the label on the main screen
-        var lblHello = document.getElementById("lblHello");
-    // Display Hello World msg to user
-    lblHello.innerHTML = "Hello World!";
-
-}
-
-
+    }
 };
