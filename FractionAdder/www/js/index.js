@@ -27,6 +27,8 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        // document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.getElementById("btnCalculate").addEventListener('click', this.onCalculate, true);
     },
     // deviceready Event Handler
     //
@@ -37,8 +39,24 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
 
 
         console.log('Received Event: ' + id);
+    },
+
+    onCalculate: function(e) {
+    // Get references to the DOM elements
+    var firstNum = document.getElementById("num1");
+    var firstDenom = document.getElementById("denom1");
+    var secondNum = document.getElementById("num2");
+    var secondDenom = document.getElementById("denom2");
+
     }
 };
+
