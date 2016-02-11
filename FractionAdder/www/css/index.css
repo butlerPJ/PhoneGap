@@ -48,14 +48,12 @@ body {
 /* Portrait layout (default) */
 .app {
     /* background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:23%;
+    position: absolute;             /* position in the center of the screen */
+    left:18%;
     top:15%;
     text-align:center;
     font-size: 18px;
-    padding:50px, 50px, 50px, 50px;     /* image height is 200px (bottom 20px are overlapped with text) */
-      /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    padding:50px, 50px, 50px, 50px;
 }
 
 /* Landscape layout (with min-width) */

@@ -28,7 +28,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         // document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.getElementById("btnCalculate").addEventListener('click', this.onCalculate, true);
+        document.getElementById("btnCalculate").addEventListener('click', this.onCalculate, false);
     },
     // deviceready Event Handler
     //
@@ -52,10 +52,10 @@ var app = {
 
     onCalculate: function(e) {
     // Get references to the DOM elements
-    var firstNum = document.getElementById("num1");
-    var firstDenom = document.getElementById("denom1");
-    var secondNum = document.getElementById("num2");
-    var secondDenom = document.getElementById("denom2");
+    var firstNum = document.getElementById("num1").valueOf;
+    var firstDenom = document.getElementById("denom1").valueOf;
+    var secondNum = document.getElementById("num2").valueOf;
+    var secondDenom = document.getElementById("denom2").valueOf;
 
     }
 };
