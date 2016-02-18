@@ -1,3 +1,6 @@
+
+/* globals Fraction */
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -28,7 +31,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         // document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.getElementById("btnCalculate").addEventListener('click', this.onCalculate, false);
+        document.getElementById("btnCalculate").addEventListener('click', this.onCalculate, true);
     },
     // deviceready Event Handler
     //
@@ -52,11 +55,36 @@ var app = {
 
     onCalculate: function(e) {
     // Get references to the DOM elements
-    var firstNum = document.getElementById("num1").valueOf;
-    var firstDenom = document.getElementById("denom1").valueOf;
-    var secondNum = document.getElementById("num2").valueOf;
-    var secondDenom = document.getElementById("denom2").valueOf;
+    var firstNum  =  document.getElementById("num1").value;
+    var origNum1 = document.getElementById("num1").value;
+    var firstDenom = document.getElementById("denom1").value;
+    var origDenom1 = document.getElementById("denom1").value;
+    var secondNum = document.getElementById("num2").value;
+    var origNum2 = document.getElementById("num2").value;
+    var secondDenom = document.getElementById("denom2").value;
+    var origDenom2 = document.getElementById("denom2").value;
+
+
+    // Math to determine numerator and denominator of the sum
+    var sumNum = (firstNum * secondDenom) + (secondNum * firstDenom);
+    var sumDenom = (firstDenom * secondDenom);
+
+    var frac = new Fraction(sumNum, sumDenom);
+
+    frac.simplify();
+    sumNum = frac.getNumerator();
+    sumDenom = frac.getDenominator();
+
+    document.getElementById("num1").value = "";
+    document.getElementById("denom1").value = "";
+    document.getElementById("num2").value = "";
+    document.getElementById("denom2").value = "";
+
+    document.getElementById("txtOutput").innerHTML =  origNum1 + "/" + origDenom1 + " + " + origNum2 + "/" + origDenom2 + " = " + sumNum + "/" + sumDenom;
+
 
     }
+
+
 };
 

@@ -13,7 +13,29 @@ function Fraction(num, denom) {
         return denominator;
     };
 
-    this.add = function(frac) {
-        var a, b, c, d;
+
+
+    this.simplify = function() {
+
+    var a,b,x;
+
+    a = this.getNumerator();
+    b = this.getDenominator();
+
+    x = this.gcd(a, b);
+
+    numerator = a / x;
+    denominator = b / x;
+
+    };
+
+    this.gcd = function(a, b) {
+        var gcd;
+        if (b === 0) {
+            return a;
+        } else {
+            return this.gcd(b, a % b);
+        }
+
     };
 }
