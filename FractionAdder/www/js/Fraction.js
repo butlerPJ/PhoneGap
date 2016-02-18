@@ -18,10 +18,10 @@ function Fraction(num, denom) {
     this.simplify = function() {
 
     var a,b,x;
-
+    // get the fraction to be simplified
     a = this.getNumerator();
     b = this.getDenominator();
-
+    // determine greatest common denominator
     x = this.gcd(a, b);
 
     numerator = a / x;
