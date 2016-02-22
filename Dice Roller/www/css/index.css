@@ -70,7 +70,7 @@ body {
 }
 
 h1 {
-    font-size:24px;
+    font-size:40px;
     font-weight:normal;
     margin:0px;
     overflow:visible;
@@ -112,4 +112,9 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+.output {
+    font-size: 60px;
+    color:firebrick;
 }

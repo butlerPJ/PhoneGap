@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -26,7 +27,10 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        
+        // wire up btnRoll eventlistener
+        document.getElementById("btnRoll").addEventListener('click', this.onRoll, false);
+        document.getElementById("diceSides").addEventListener('onchange', this.onChange, false);
     },
     // deviceready Event Handler
     //
@@ -47,5 +51,13 @@ var app = {
         console.log('Received Event: ' + id);
     },
     
-    
+    onRoll: function() {
+        var dice = document.getElementById("diceSides");
+        var diceSides = dice.options[dice.selectedIndex].value;
+        var display = document.getElementById("lblOutput");
+        
+        var rolled = Math.floor(Math.random() * diceSides) + 1;
+        display.innerHTML = rolled;
+    }
+  
 };

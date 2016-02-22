@@ -33,17 +33,10 @@
         <div class="app">
             <img src="img/myLogo.png" alt="myLogo.png" />
             <h1>Dice Roller</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-            
-            <div style="margin:8px">
-                <p>How Many Sides do you Want?</p>
-            </div>
             
             <div>
-                <select>
+                    <p style="font-size:20px">How Many Sides do you Want?</p>
+                <select id="diceSides">
                     <option value="4">4</option>
                     <option value="6">6</option>
                     <option value="8">8</option>
@@ -51,9 +44,10 @@
                     <option value="12">12</option>
                     <option value="20">20</option>
                 </select>
+                <input id="btnRoll" type="button" value="Roll the dice!!" />
             </div>
-            <input id="btnRoll" type="button" value="Roll the dice!!" onClick="" />
-            <div id="lblOutput"></div>
+            
+            <div id="lblOutput" class="output"></div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
