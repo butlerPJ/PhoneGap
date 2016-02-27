@@ -113,3 +113,63 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+#btnAdd {
+    padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #000000;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+#btnAdd:active {
+  background-color: #fff;
+  color:#000000;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#btnDelete {
+    padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #000000;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+#btnDelete:active {
+  background-color: #fff;
+  color:#000000;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#btnTest {
+    padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #000000;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+#btnTest:active {
+  background-color: #fff;
+  color:#000000;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

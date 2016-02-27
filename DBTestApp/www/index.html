@@ -8,10 +8,15 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>DBTest App</title>
     </head>
-    <body>
-        <input name="btnAdd" type="button" value="Add Me!">
+    <body onLoad="init()">
+        <input id="btnAdd" type="button" value="Add Me!">
 
-        <div name="output"></div>
+        <input id="btnDelete" type="button" value="Delete Me!">
 
+        <input id="btnTest" type="button" value="Test Me!">
+
+        <div id="output"></div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>
