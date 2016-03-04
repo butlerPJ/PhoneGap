@@ -9,7 +9,7 @@
     </head>
     <body>
         <section class="topcoat-list__container" id="contacts"><ul class="topcoat-list"></ul></section>
-        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-2.2.0.min.js"></script>
         <script>
         $(document).ready(function(){
             // Get the data from the json file
@@ -25,6 +25,32 @@ First Name: " + value.first + "<br> Last Name: " + value.last + "</li>");
             });
             
         });
+        </script>
+        <script>
+            $(document).ready(function(){
+                $.getJSON("data/data.json").done(function(data){
+                    localStorage.setItem("data", JSON.stringify(data));
+                    
+                    $.each(data.contacts, function(index, value){
+                        $("#contacts ul").append(
+                            "<li class='topcoat-list__item'>\
+                        First Name: "
++ value.first + "<br> Last Name: " + value.last + "</li>");
+                    })
+                }).fail(function(){
+                    if (localStorage.length != 0) {
+                        var localData = $.parseJSON(localStorage.getItem("data"));
+                        
+                        $.each(localData.contacts, function(index, value){
+                            
+                            $("contacts ul").append(
+                            "<li class='topcoat-list__item'>\ First Name: " + value.first + " <br> Last Name: " + value.last + "</li>"
+                            );
+                        });
+                    }
+                });
+                
+            });
         </script>
     </body>
 </html>
