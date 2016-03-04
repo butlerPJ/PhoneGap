@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Local Storage</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/topcoat-mobile-dark.min.css">
+        <style>#contacts ul{text-align: center;}</style>
+    </head>
+    <body>
+        <section class="topcoat-list__container" id="contacts"><ul class="topcoat-list"></ul></section>
+        <script src="js/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            // Get the data from the json file
+            $.getJSON("data/data.json").done(function(data){
+                // Store the data in the local storage
+                localStorage.setItem("data", JSON.stringify(data));
+                // go through each contact and append the data to an un-ordered list
+                $.each(data.contacts, function(index, value) {
+                    
+                    $("#contact ul").append("<li class='topcoat-list__item'>\
+First Name: " + value.first + "<br> Last Name: " + value.last + "</li>");
+                });
+            });
+            
+        });
+        </script>
+    </body>
+</html>
