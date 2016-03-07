@@ -16,6 +16,31 @@ var app = {
 
         });
         // $('.search-key').on('keyup', $.proxy(this.findByName, this));
+        app.registerEvents();
+    },
+
+    registerEvents: function() {
+        var self = this;
+        // Check browser for touch event support...
+        if (document.documentElement.hasOwnProperty('ontouchstart')) {
+            // If yes, register touch event listener to change the "selected" state of the list item (blue background)
+            $('body').on('touchstart', 'a', function(e) {
+                $(e.target).addClass('tappable-active');
+            });
+            $('body').on('touchend', 'a', function(e) {
+                $(e.target).addClass('tappable-active');
+            });
+            console.log('Touch support!!');
+        } else {
+            // If no, register mouse events instead
+            $('body').on('mousedown', 'a', function(e) {
+                $(e.target).addClass('tappable-active');
+            });
+            $('body').on('mouseup', 'a', function(e) {
+                $(e.target).addClass('tappable-active');
+            });
+            console.log('No Touch support!!');
+        }
     },
 
     showAlert: function (message, title) {

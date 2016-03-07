@@ -12,6 +12,11 @@ html {
     right: 0px;
 }
 
+li>a.tappable-active {
+    color: #fff;
+    background-color: #4286f5;
+}
+
 body {
     font-family: source-sans-pro, serif;
     font-size: 16px;
