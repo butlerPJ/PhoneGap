@@ -8,18 +8,30 @@ var app = {
         this.employeeLiTpl = Handlebars.compile($("#employee-li-tpl").html()); */
 
         var self = this;
+
+        // RegEx to match the employee details url's
+        this.detailsURL = /^#employees\/(\d{1,})/;
+
+        this.registerEvents();
+
         this.store = new MemoryStore(function() {
+            self.route();
             // Display the HomeView using the HomeView class
-            $('body').html(new HomeView(self.store).render().el);
+            // $('body').html(new HomeView(self.store).render().el);
         // self.showAlert('Store Initialized', 'Info');
         // self.renderHomeView();
 
         });
+
+
+
         // $('.search-key').on('keyup', $.proxy(this.findByName, this));
-        app.registerEvents();
+
     },
 
     registerEvents: function() {
+        // Event Listener for URL hash tag changes
+        $(window).on('hashchange', $.proxy(this.route, this));
         var self = this;
         // Check browser for touch event support...
         if (document.documentElement.hasOwnProperty('ontouchstart')) {
@@ -40,6 +52,20 @@ var app = {
                 $(e.target).addClass('tappable-active');
             });
             console.log('No Touch support!!');
+        }
+    },
+
+    route: function(){
+        var hash = window.location.hash;
+        if (!hash) {
+            $('body').html(new HomeView(this.store).render().el);
+            return;
+        }
+        var match = hash.match(app.detailsURL);
+        if (match) {
+            this.store.findById(Number(match[1]), function(employee) {
+                $('body').html(new EmployeeView(employee).render().el);
+            });
         }
     },
 
