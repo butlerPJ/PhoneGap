@@ -13,7 +13,7 @@
 <!-- Home view template -->
 <script id="home-tpl" type="text/x-handlebars-template">
     <div class='header'><h1>Home</h1></div>
-    <div class='search-bar'><input class='search-key' type="search"/></div>
+    <div class='search-bar'><input class='search-key' type="search" autofocus/></div>
     <div class="scroll"><ul class='employee-list'></ul></div>
 </script>
 
@@ -35,7 +35,9 @@
             <li><a href="tel:{{officePhone}}">Call Office<br/>{{officePhone}}</a></li>
             <li><a href="tel:{{cellPhone}}">Call Cell<br/>{{cellPhone}}</a></li>
             <li><a href="sms:{{cellPhone}}">SMS<br/>{{cellPhone}}</a></li>
-            <li><a href='#' class="add-location-btn">Add Location</a></li>
+            <li><a href='#' class="btnLocation">Add Location</a></li>
+            <li><a href="#" class="btnContact">Add to Contacts</a></li>
+            <li><a href="#" class="btnPicChange">Change Picture</a></li>
         </ul>
     </div>
 </script>
