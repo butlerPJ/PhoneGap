@@ -120,7 +120,7 @@
                 for (var i=0; i <rowCount; i++) {
                     // Check if the checkbox is checked - If yes, delete the row
                     var row = table.rows[i];
-                    var chkbox = row.cells[0].chileNodes[0];
+                    var chkBox = row.cells[0].childNodes[0];
                     if (chkBox != null && chkBox.checked === true) {
                         table.deleteRow(i);
                         rowCount--;
