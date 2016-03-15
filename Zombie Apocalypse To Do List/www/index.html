@@ -38,6 +38,8 @@
                 element1.name = "chkBox[]";
                 element1.checked = todoDictionary["check"];
                 element1.setAttribute("onclick", "checkboxClicked()");
+                // ADD ME - Add the class name 'checkbox' to the checkbox
+                element1.className = "checkbox";
                 cell1.appendChild(element1);
                 
                 // Create the textbox
@@ -49,6 +51,8 @@
                 element2.id = "text" + rowID;
                 element2.value = todoDictionary["text"];
                 element2.setAttribute("onchange", "saveToDoList()");
+                // ADD ME - Add the class name 'textbox' to element2
+                element2.className = "textbox";
                 cell2.appendChild(element2);
                 
                 // Create the view button
@@ -58,6 +62,8 @@
                 element3.id = rowID;
                 element3.value = "View";
                 element3.setAttribute("onclick", "viewSelectedRow(document.getElementById('text' + this.id))");
+                // ADD ME - Add the class name 'viewButton' to element3
+                element3.className = "viewButton";
                 cell3.appendChild(element3);
                 
                 // Create the delete button
@@ -66,6 +72,8 @@
                 element4.type = "button";
                 element4.value = "Delete";
                 element4.setAttribute("onclick", "deleteSelectedRow(this)");
+                // ADD ME - Add the class name 'deleteButton' to element4
+                element4.className = "deleteButton";
                 cell4.appendChild(element4);
                 
                 // Update the interface and save the TO-Do list
@@ -218,9 +226,10 @@
         </script>
     </head>
     <body onLoad="loadToDoList()">
+        <img src="img/header.png" width="100%" />
         <div class="wrapper">
-            <input type="button" value="Add To-Do" onClick="createNewToDo()"/>
-            <input type="button" value="Remove Completed Tasks" onClick="removeCompletedTasks()"/>
+            <button type="button" class="addToDo" value="Add To-Do" onClick="createNewToDo()"><img src="img/button_addtodo.png"></button>/>
+            <button type="button" class="removeTasks" value="Remove Completed Tasks" onClick="removeCompletedTasks()"><img src="img/button_removetasks.png"></button>/>
         </div>
         <br/><br/>
         <table id="dataTable" width="100%" border="1">
