@@ -1,46 +1,230 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <title>Zombie Apocalypse To-Do List</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
         <script type="text/javascript">
-            app.initialize();
+            
+            // Create a new TODO list item
+            function createNewToDo() {
+                var todoDictionary = {};
+                
+                // User Prompt to enter new TODO list item
+                var todo = prompt("To-Do", "");
+                    if (todo != null) {
+                        // Check if user has entered a todo item - if not, display alert message
+                        if (todo === "") {
+                        alert("To-Do can't be empty, Please enter new list item!");
+                    } else {
+                        // append the new list item onto the table
+                        todoDictionary = {check : 0 , text: todo};
+                        addTableRow(todoDictionary, false);
+                    }
+                }
+            }
+            
+            // Add a new row to the table
+            var rowID = 0;
+            function addTableRow(todoDictionary, appIsLoading) {
+                rowID+=1;
+                var table = document.getElementById("dataTable");
+                var rowCount = table.rows.length;
+                var row = table.insertRow(rowCount);
+                
+                // Create the checkbox
+                var cell1 = row.insertCell(0);
+                var element1 = document.createElement("input");
+                element1.type = "checkbox";
+                element1.name = "chkBox[]";
+                element1.checked = todoDictionary["check"];
+                element1.setAttribute("onclick", "checkboxClicked()");
+                cell1.appendChild(element1);
+                
+                // Create the textbox
+                var cell2 = row.insertCell(1);
+                var element2 = document.createElement("input");
+                element2.type = "text";
+                element2.name = "txtbox[]";
+                element2.size = 16;
+                element2.id = "text" + rowID;
+                element2.value = todoDictionary["text"];
+                element2.setAttribute("onchange", "saveToDoList()");
+                cell2.appendChild(element2);
+                
+                // Create the view button
+                var cell3 = row.insertCell(2);
+                var element3 = document.createElement("input");
+                element3.type = "button";
+                element3.id = rowID;
+                element3.value = "View";
+                element3.setAttribute("onclick", "viewSelectedRow(document.getElementById('text' + this.id))");
+                cell3.appendChild(element3);
+                
+                // Create the delete button
+                var cell4 = row.insertCell(3);
+                var element4 = document.createElement("input");
+                element4.type = "button";
+                element4.value = "Delete";
+                element4.setAttribute("onclick", "deleteSelectedRow(this)");
+                cell4.appendChild(element4);
+                
+                // Update the interface and save the TO-Do list
+                checkboxClicked();
+                saveToDoList();
+                
+                // Check to make sure app is not loading - if not, display alert that task was successfully added
+                if (!appIsLoading) alert("Task Successfully Added");
+            }
+                // Add a strike through line to each completed TODO list item
+                function checkboxClicked() {
+                    var table = document.getElementById("dataTable");
+                    var rowCount = table.rows.length;
+                    
+                    // Loop through table rows
+                    for (var i =0; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var chkBox = row.cells[0].childNodes[0];
+                        var textbox = row.cells[1].childNodes[0];
+                        
+                        // Check if check box is checked - If yes, Add strike through styling to the item to cross it off the list
+                        if (chkBox != null && chkBox.checked === true) {
+                            if (textbox != null) {
+                                textbox.style.setProperty("text-decoration", "line-through");
+                            }
+                            } else {
+                                textbox.style.setProperty("text-decoration", "none");
+                            }
+                        }
+                    // Save the TODO list
+                    saveToDoList();
+                    }
+            
+            // View the content of selected row
+            function viewSelectedRow(todoTextField) {
+                alert(todoTextField.value);
+            }
+                
+            // Delete selected row
+            function deleteSelectedRow(deleteButton) {
+                var p = deleteButton.parentNode.parentNode;
+                p.parentNode.removeChild(p);
+                saveToDoList();
+            }
+            
+            // Remove completed items from the list
+            function removeCompletedTasks() {
+                var table = document.getElementById("dataTable");
+                var rowCount = table.rows.length;
+                
+                // Loop through table rows
+                for (var i=0; i <rowCount; i++) {
+                    // Check if the checkbox is checked - If yes, delete the row
+                    var row = table.rows[i];
+                    var chkbox = row.cells[0].chileNodes[0];
+                    if (chkBox != null && chkBox.checked === true) {
+                        table.deleteRow(i);
+                        rowCount--;
+                        i--;
+                    }
+                }
+                
+                // Save to TODO list
+                saveToDoList();
+                
+                alert("Completed Tasks Successfully Removed!");
+            }
+            
+            // Save the TODO list
+            function saveToDoList() {
+                var todoArray = {};
+                var checkBoxState = 0;
+                var textValue = "";
+                
+                var table = document.getElementById("dataTable");
+                var rowCount = table.rows.length;
+                
+                if (rowCount != 0) {
+                    // Loop through table rows
+                    for (var i =0; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        
+                        // Determine CheckBox State
+                        var chkBox = row.cells[0].childNodes[0];
+                        if (chkBox != null && chkBox.checked === true) {
+                            checkBoxState = 1;
+                        } else {
+                            checkBoxState = 0;
+                        }
+                        
+                        // Retrieve TODO Content
+                        var textbox = row.cells[1].childNodes[0];
+                        textValue = textbox.value;
+                        
+                        // Populate the array
+                        todoArray["row" + i] = {
+                            check : checkBoxState,
+                            text : textValue
+                        };
+                    }
+                    
+                } else {
+                    todoArray = null;
+                }
+                
+                // Use Local Storage API to persist the data as JSON
+                window.localStorage.setItem("todoList", JSON.stringify(todoArray));
+            }
+            
+            // Load the TODO list
+            function loadToDoList() {
+                // Use the local storage API to load the JSON formatted list and parse it out
+                var theList = JSON.parse(window.localStorage.getItem("todoList"));
+                
+                if (theList === null || theList === "null") {
+                    deleteAllRows();
+                } else {
+                    var count = 0;
+                    for (var obj in theList) {
+                        count++;
+                    }
+                    
+                    // Remove existing rows from the table
+                    deleteAllRows();
+                    
+                    // Loop through the TODO's
+                    for (var i = 0; i < count; i++) {
+                        // Add a row to the table for each TODO item
+                        addTableRow(theList["row" + i], true);
+                    }
+                }
+            }
+            
+            // Delete all the rows
+            function deleteAllRows() {
+                var table = document.getElementById("dataTable");
+                var rowCount = table.rows.length;
+                
+                // Loop through table rows
+                for (var i = 0; i < rowCount; i++) {
+                    // Delete the row
+                    table.deleteRow(i);
+                    rowCount--;
+                    i--;
+                }
+                
+                // Save the TODO list
+                saveToDoList();
+            }
         </script>
+    </head>
+    <body onLoad="loadToDoList()">
+        <div class="wrapper">
+            <input type="button" value="Add To-Do" onClick="createNewToDo()"/>
+            <input type="button" value="Remove Completed Tasks" onClick="removeCompletedTasks()"/>
+        </div>
+        <br/><br/>
+        <table id="dataTable" width="100%" border="1">
+ 
+        </table>
     </body>
 </html>
