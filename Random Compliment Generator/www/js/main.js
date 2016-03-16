@@ -8,7 +8,7 @@ var app = {
     bindEvents: function() {
     // Event Listeners
     document.getElementById("btnComp").addEventListener('click', this.complimentMe, false);
-    
+    document.getElementById("btnSave").addEventListener('click', this.archiveUs, false);
     },
         
     saveCompliments: function() {
@@ -28,7 +28,7 @@ var app = {
         var adj3;
         var noun;
         // Get the user's name
-        var target = document.getElementById("target").value;
+        var target = document.getElementById("target");
         // Array of adjectives
         var adjs = ["Awesome ", "Great ", "Super ", "Perfect ", "Intelligent ", "Amazing ", "Likable ", "Cool ", "Dapper "];
         // Array of nouns
@@ -36,7 +36,7 @@ var app = {
         var i = 0;
         
         // Check if txtbox is empty
-        if (target !== "") {
+        if (target.value !== "") {
             
             while (adj1 === adj2 || adj1 === adj3 || adj2 === adj3 || adj2 === adj1 || adj3 === adj1 || adj3 === adj2) {
             adj1 = adjs[Math.floor(Math.random()*adjs.length)];
@@ -45,10 +45,11 @@ var app = {
             noun = nouns[Math.floor(Math.random()*nouns.length)];
                // console.log(target + " " + adj1 + adj2 +adj3 + noun);
             }
-            var newString = target + " is a " + adj1 + adj2 + adj3 + noun;
+            var newString = target.value + " is a " + adj1 + adj2 + adj3 + noun;
             
             document.getElementById("output").innerHTML += newString + '<br/>';
-            
+            target.value = "";
+            target.focus();
              
             console.log(newString);
             window.localStorage.setItem("string", JSON.stringify(newString));
