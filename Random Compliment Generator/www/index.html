@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Random Compliment Generator</title>
     </head>
-    <body>
+    <body onLoad="loadComp()">
         <div>
             <h1>Random Compliment Generator</h1>
             <h3>Enter your name in the textbox provided below</h3><br/>
@@ -31,6 +31,12 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript">
         app.initialize();
+        
+        </script>
+        <script type="text/javascript">
+            function loadComp() {
+                app.loadUs();
+            }
         </script>
     </body>
 </html>
