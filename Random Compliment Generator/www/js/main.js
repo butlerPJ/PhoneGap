@@ -39,7 +39,7 @@ var app = {
             }
             var newString = target.value + " is a " + adj1 + adj2 + adj3 + noun + '<br>';
             
-            compliments = document.getElementById("output").innerHTML += newString;
+            compliments += document.getElementById("output").innerHTML += newString;
             target.value = "";
             target.focus();
              
@@ -50,8 +50,9 @@ var app = {
         } else {
             alert("Please enter a name...");
         }
-        app.archiveUs();
         app.loadUs();
+        app.archiveUs();
+        
     },
     
     archiveUs: function() {
@@ -67,6 +68,7 @@ var app = {
         
         // display compliments
         document.getElementById("compliments").innerHTML = compliments;
+        
         
     }
 };
