@@ -1,0 +1,11 @@
+{
+    "jscodehints.detectedExclusions": [
+        "E:/PhoneGapRepo/PhoneGap/Zombie Apocalypse To Do List/www/spec/index.js",
+        "E:/PhoneGapRepo/PhoneGap/Zombie Apocalypse To Do List/www/spec/helper.js",
+        "E:/PhoneGapRepo/PhoneGap/Zombie Apocalypse To Do List/www/spec/lib/jasmine-1.2.0/jasmine.js",
+        "E:/PhoneGapRepo/PhoneGap/Zombie Apocalypse To Do List/www/spec/lib/jasmine-1.2.0/jasmine-html.js",
+        "E:/PhoneGapRepo/PhoneGap/Zombie Apocalypse To Do List/www/js/index.js",
+        "E:/PhoneGapRepo/PhoneGap/Random Compliment Generator/www/spec/index.js",
+        "E:/PhoneGapRepo/PhoneGap/Random Compliment Generator/www/spec/helper.js"
+    ]
+}

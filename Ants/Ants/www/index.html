@@ -31,34 +31,57 @@
         <title>Ants</title>
     </head>
     <body>
-        <h1>Ants</h1>
-        <div class="app">
+        <div>
+            <h1>Ants</h1>
+        </div>
+
+        <div class="app remove-me">
 
 
         </div>
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6 coins well">
+            <div class="row well well-sm purchases">
+                <div class="col-xs-4 info well min-me">
                     <div class="under">COINS</div>
                     <div>300</div>
                 </div>
-                <div id=""></div>
-
-                <div class="col-sm-6 pop well">
+                <div class="col-xs-4 info well min-me">
+                    <div class="under">ROOMS</div>
+                    <div>3</div>
+                </div>
+                <div class="col-xs-4 info well min-me">
                     <div>
-                        <div class="under">POPULATION</div>
-                        <div id="popOutput">15</div>
+                        <div class="under">ANT POPULATION</div>
+                        <div id="popOutput">5</div>
                     </div>
                 </div>
-                <br/>
-                <div class="well well-sm buttons">
-                    <button class="btn btn-default btn-md" type="button" id="btnAnts">Buy Ants</button>
-
+            </div> <!-- End of first row -->
+            <div class="row well well-sm purchases" style="text-align: center;">
+                <div class="col-xs-6 min-me well brownText">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="txtBuyAnts" style="font-size:1.22em;">How many ants would you like to buy?</label>
+                            <input type="text" class="form-control input-sm" id="txtBuyAnts">
+                                <br>
+                            <button class="btn btn-default btn-md" type="button" id="btnAnts">Buy</button>
+                        </div>
+                    </form>
                 </div>
 
-            </div>
+                <div class="col-xs-6 min-me well brownText">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="txtBuyRooms" style="font-size:1.22em;">Want to increase your ant capacity? Buy more rooms!</label>
+                            <input type="text" class="form-control input-sm" id="txtBuyRooms">
+                                <br>
+                            <button class="btn btn-default btn-md" type="button" id="btnRooms">Buy</button>
+                        </div>
+                    </form>
+                </div>
+            </div> <!-- End of second row -->
         </div>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/Ant.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
 
     </body>

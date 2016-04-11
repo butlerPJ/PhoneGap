@@ -21,7 +21,7 @@ body {
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
     height:100%;
-    margin:10%;
+    margin:5%;
     padding:0px;
     text-transform:uppercase;
 
@@ -56,6 +56,26 @@ body {
     }
 }
 
+@media screen and (max-width:560px) {
+  .remove-me {
+    display: none;
+  }
+
+  .show-me {
+    display: block;
+    text-align: center;
+  }
+
+  .inline-me {
+    display: inline-block;
+  }
+
+    .min-me {
+        text-align: center;
+        width:100%;
+    }
+}
+
 h1 {
     font-size:36px;
     font-weight:normal;
@@ -75,22 +95,24 @@ h1 {
     padding: 10px;
 }
 
-.coins {
-    font-size: 25px;
+.info {
+    font-size: 1.78em;
     text-align: center;
     background-color: #CCC46F;
+    color: #994d00;
+    text-shadow: 1px 1px #000;
 }
 
-.pop {
-    font-size: 25px;
-    text-align: center;
-    background-color: #CCC46F;
-}
-
-.buttons {
+.purchases {
     background-color: #bf8040;
 }
 
 .under {
     text-decoration: underline;
+}
+
+.brownText {
+    color: #bf8040;
+    text-shadow: 1px 1px #000;
+    background-color: #CCC46F;
 }
