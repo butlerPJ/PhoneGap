@@ -71,6 +71,7 @@
                             <input type="text" class="form-control input-sm" id="txtBuyAnts">
                                 <br>
                             <button class="btn btn-default btn-md" type="button" id="btnAnts">Buy</button>
+                            <div id="feedback"></div>
                         </div>
                     </form>
                 </div>
@@ -88,8 +89,10 @@
             </div> <!-- End of second row -->
         </div>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/Ant.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
 
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript">
+        app.initialize();
+        </script>
     </body>
 </html>

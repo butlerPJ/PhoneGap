@@ -16,14 +16,24 @@ var app = {
     buyAnts: function() {
         var rooms = document.getElementById("rooms");
         var ants = document.getElementById("population");
-        var buyAttempt = document.getElementById("txtBuyAnts");
+        var buyAttempt = document.getElementById("txtBuyAnts").value;
+        var feedback = document.getElementById("feedback");
+
         var cost = 30 * buyAttempt;
-        if () {
-            if (!ants.value + buyAttempt.value >= rooms.value * 5) {
-                console.log("Ants bought!");
-            } else {
-                console.log("Maximum number reached...Buy more rooms");
-            }
+        if (buyAttempt.value != "") {
+
+                if (ants + buyAttempt.value >= rooms * 5) {
+                    feedback.innerHTML = "Maximum number reached...Buy more rooms";
+                } else {
+                    console.log("Ants bought!");
+                    // console.log(newPop);
+                    console.log(cost);
+                    console.log("buyAttempt" + buyAttempt);
+                    ants.innerHTML = parseInt(ants.innerHTML) + parseInt(buyAttempt);
+                }
+
+        } else {
+            feedback.innerHTML = "Enter Amount of ants to buy";
         }
     },
 
