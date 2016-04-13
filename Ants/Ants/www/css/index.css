@@ -103,6 +103,14 @@ h1 {
     text-shadow: 1px 1px #000;
 }
 
+.help {
+    font-size: 1.78em;
+    text-align: center;
+    background-color: #CCC46F;
+    color: #000;
+    text-shadow: 1px 1px #994d00;
+}
+
 .purchases {
     background-color: #bf8040;
 }
