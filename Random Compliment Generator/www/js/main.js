@@ -68,8 +68,6 @@ var app = {
         
         // display compliments
         document.getElementById("compliments").innerHTML = compliments;
-        
-        
     }
 };
 

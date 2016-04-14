@@ -74,6 +74,14 @@ body {
         text-align: center;
         width:100%;
     }
+
+    .smallText {
+        font-size: .87em;
+    }
+
+    .prices {
+
+    }
 }
 
 h1 {
