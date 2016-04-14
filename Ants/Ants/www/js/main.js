@@ -2,6 +2,7 @@ var app = {
 
     // Initialization
     initialize: function() {
+
         this.bindEvents();
 
     },
@@ -41,6 +42,7 @@ var app = {
                     antPrice.innerHTML = currentAntPrice + " COINS";
                     app.saveGame();
                 }
+
             }
         }
 
@@ -87,16 +89,21 @@ var app = {
     },
 
     loadGame: function() {
+        if (localStorage.getItem("username") === null) {
+            rooms.innerHTML = 1;
+            ants.innerHTML = 0;
+            coins.innerHTML = 100;
+        } else {
         // Retrieve data
         window.localStorage.getItem("rooms");
         window.localStorage.getItem("ants");
         window.localStorage.getItem("coins");
 
         // display data
-        document.getElementById("rooms").innerHTML = storedRooms;
-        document.getElementById("population").innerHTML = storedAnts;
-        document.getElementById("coins").innerHTML = storedCoins;
-
+        document.getElementById("rooms").innerHTML = rooms.innerHTML;
+        document.getElementById("population").innerHTML = ants.innerHTML;
+        document.getElementById("coins").innerHTML = coins.innerHTML;
+        }
 
     }
 };
@@ -105,9 +112,7 @@ var rooms = document.getElementById("rooms");
 var ants = document.getElementById("population");
 var coins = document.getElementById("coins");
 var income = parseInt(ants.innerHTML) * 1;
-/*rooms.innerHTML(1);
-ants.innerHTML(0);
-coins.innerHTML(100);*/
+
 
 var storedRooms = window.localStorage.getItem("rooms");
 var storedAnts = window.localStorage.getItem("ants");
