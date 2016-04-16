@@ -2,7 +2,6 @@ var app = {
 
     // Initialization
     initialize: function() {
-
         this.bindEvents();
 
     },
@@ -82,30 +81,26 @@ var app = {
 
     saveGame: function() {
         // Save the data to the local storage
-        window.localStorage.setItem("rooms", rooms.innerHTML);
-        window.localStorage.setItem("ants", ants.innerHTML);
-        window.localStorage.setItem("coins", coins.innerHTML);
+        window.localStorage.setItem("rooms",storedRooms);
+        window.localStorage.setItem("ants", storedAnts);
+        window.localStorage.setItem("coins", storedCoins);
 
     },
 
     loadGame: function() {
-        if (localStorage.getItem("username") === null) {
-            rooms.innerHTML = 1;
-            ants.innerHTML = 0;
-            coins.innerHTML = 100;
-        } else {
+
         // Retrieve data
         window.localStorage.getItem("rooms");
         window.localStorage.getItem("ants");
         window.localStorage.getItem("coins");
 
         // display data
-        document.getElementById("rooms").innerHTML = rooms.innerHTML;
-        document.getElementById("population").innerHTML = ants.innerHTML;
-        document.getElementById("coins").innerHTML = coins.innerHTML;
-        }
-
+        document.getElementById("rooms").innerHTML = storedRooms;
+        document.getElementById("population").innerHTML = storedAnts;
+        document.getElementById("coins").innerHTML = storedCoins;
     }
+
+
 };
 
 var rooms = document.getElementById("rooms");

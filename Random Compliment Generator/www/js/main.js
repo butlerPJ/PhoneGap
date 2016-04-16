@@ -39,7 +39,7 @@ var app = {
             }
             var newString = target.value + " is a " + adj1 + adj2 + adj3 + noun + '<br>';
             
-            compliments += document.getElementById("output").innerHTML += newString;
+            compliments += newString;
             target.value = "";
             target.focus();
              

@@ -32,7 +32,7 @@
         <title>Ants</title>
 
     </head>
-    <body onload="loadUp">
+    <body onload="loadUp()">
         <div class="container-fluid">
             <div class="row">
                 <div>
@@ -113,14 +113,21 @@
             window.setInterval(
                  function () {
                      app.addCoins();
-                     app.saveGame();
-
                  }, 1000);
+            app.saveGame();
         </script>
         <script type="text/javascript">
             function loadUp() {
-            app.loadGame();
-            app.saveGame();
+            if (localStorage.getItem("rooms") === null) {
+                document.getElementById("rooms").innerHTML = 1;
+                document.getElementById("population").innerHTML = 0;
+                document.getElementById("coins").innerHTML = 100;
+                app.saveGame();
+            } else {
+                app.loadGame();
+                app.saveGame();
+            }
+
 
             }
         </script>
