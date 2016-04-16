@@ -113,15 +113,16 @@
             window.setInterval(
                  function () {
                      app.addCoins();
+                     app.saveGame();
                  }, 1000);
-            app.saveGame();
+
         </script>
         <script type="text/javascript">
             function loadUp() {
             if (localStorage.getItem("rooms") === null) {
-                document.getElementById("rooms").innerHTML = 1;
+                /*document.getElementById("rooms").innerHTML = 1;
                 document.getElementById("population").innerHTML = 0;
-                document.getElementById("coins").innerHTML = 100;
+                document.getElementById("coins").innerHTML = 100;*/
                 app.saveGame();
             } else {
                 app.loadGame();

@@ -80,6 +80,9 @@ var app = {
     },
 
     saveGame: function() {
+        storedRooms = rooms.innerHTML;
+        storedAnts = ants.innerHTML;
+        storedcoins = coins.innerHTML;
         // Save the data to the local storage
         window.localStorage.setItem("rooms",storedRooms);
         window.localStorage.setItem("ants", storedAnts);
