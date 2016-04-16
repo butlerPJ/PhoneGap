@@ -40,6 +40,7 @@
                 </div>
                 <div>
                     <a href="howToPlay.html" class="btn btn-default pull-right" role="button">How To Play</a>
+                    <button class="btn btn-default btn-md" type="button" id="btnReset">Reset Game</button>
                 </div>
             </div>
 
@@ -73,7 +74,7 @@
                 <div class="col-xs-6 min-me well brownText">
                     <form role="form">
                         <div class="form-group">
-                            <div id="antPrice" style="font-size: 1.5em; border-style: inset;">50</div>
+                            <div id="antPrice" style="font-size: 1.5em; border-style: inset;"></div>
                             <label for="txtBuyAnts" style="font-size:1.22em;">Buy more Ants</label>
                             <input type="text" placeholder="How Many?" class="form-control input-sm" id="txtBuyAnts" onkeydown="if (window.event.keyCode == 13)
                                                                                                                                 {
@@ -90,7 +91,7 @@
                 <div class="col-xs-6 min-me well brownText">
                     <form role="form">
                         <div class="form-group">
-                            <div id="roomPrice" style="font-size: 1.5em; border-style: inset;">250</div>
+                            <div id="roomPrice" style="font-size: 1.5em; border-style: inset;"></div>
                             <label for="txtBuyRooms" style="font-size:1.22em;">Buy more rooms</label>
                             <input type="text" placeholder="How Many?" class="form-control input-sm" id="txtBuyRooms" onkeydown="if (window.event.keyCode == 13)
                                                                                                                                  {
@@ -123,6 +124,8 @@
                 document.getElementById("rooms").innerHTML = 1;
                 document.getElementById("population").innerHTML = 0;
                 document.getElementById("coins").innerHTML = 100;
+                document.getElementById("roomPrice").innerHTML = 500;
+                document.getElementById("antPrice").innerHTML = 50;
                 app.saveGame();
             } else {
                 app.loadGame();

@@ -10,6 +10,7 @@ var app = {
         // Event Listeners
         document.getElementById("btnAnts").addEventListener('click', this.buyAnts, false);
         document.getElementById("btnRooms").addEventListener('click', this.buyRooms, false);
+        document.getElementById("btnReset").addEventListener('click', this.resetGame, false);
 
     },
 
@@ -49,11 +50,9 @@ var app = {
 
     buyRooms: function() {
         var buyRoom = document.getElementById("txtBuyRooms").value;
-        var roomPrice = document.getElementById("roomPrice");
-        var initRoomCost = 250;
         var currentRoomPrice = parseInt(roomPrice.innerHTML);
         var roomCost = currentRoomPrice * buyRoom;
-        var newCount = parseInt(rooms.innerHTML) + parseInt(buyRoom);
+        var newCount;
         var roomFeedback = document.getElementById("roomFeedback");
         document.getElementById("txtBuyRooms").value = "";
         roomFeedback.innerHTML = "";
@@ -62,13 +61,14 @@ var app = {
             roomFeedback.innerHTML = "Enter Amount of rooms to buy";
 
         } else {
+            // TODO *** Add a loop to increase room price, do the same for the ant price ***
             if (roomCost > coins.innerHTML) {
                     roomFeedback.innerHTML = "Not Enough Coins!";
                 } else {
                     rooms.innerHTML = parseInt(rooms.innerHTML) + parseInt(buyRoom);
                     coins.innerHTML -= roomCost;
-                    currentRoomPrice = currentRoomPrice + (buyRoom * 10);
-                    roomPrice.innerHTML = currentRoomPrice + " COINS";
+                    newCount = currentRoomPrice + (buyRoom * 10);
+                    roomPrice.innerHTML = newCount + " COINS";
                     app.saveGame();
                 }
             }
@@ -83,10 +83,14 @@ var app = {
         storedRooms = rooms.innerHTML;
         storedAnts = ants.innerHTML;
         storedCoins = coins.innerHTML;
+        storedRoomPrice = roomPrice.innerHTML;
+        storedAntPrice = antPrice.innerHTML;
         // Save the data to the local storage
         window.localStorage.setItem("rooms",storedRooms);
         window.localStorage.setItem("ants", storedAnts);
         window.localStorage.setItem("coins", storedCoins);
+        window.localStorage.setItem("roomPrice", storedRoomPrice);
+        window.localStorage.setItem("antPrice", storedAntPrice);
         console.log(storedCoins);
     },
 
@@ -96,11 +100,24 @@ var app = {
         window.localStorage.getItem("rooms");
         window.localStorage.getItem("ants");
         window.localStorage.getItem("coins");
+        window.localStorage.getItem("roomPrice");
+        window.localStorage.getItem("antPrice");
 
         // display data
         document.getElementById("rooms").innerHTML = storedRooms;
         document.getElementById("population").innerHTML = storedAnts;
         document.getElementById("coins").innerHTML = storedCoins;
+        document.getElementById("roomPrice").innerHTML = storedRoomPrice;
+        document.getElementById("antPrice").innerHTML = storedAntPrice;
+    },
+
+    resetGame: function() {
+        document.getElementById("rooms").innerHTML = 1;
+        document.getElementById("population").innerHTML = 0;
+        document.getElementById("coins").innerHTML = 100;
+        document.getElementById("roomPrice").innerHTML = 500;
+        document.getElementById("antPrice").innerHTML = 50;
+        window.localStorage.clear();
     }
 
 
@@ -109,9 +126,12 @@ var app = {
 var rooms = document.getElementById("rooms");
 var ants = document.getElementById("population");
 var coins = document.getElementById("coins");
+var initAntCost = document.getElementById("antPrice");
+var roomPrice = document.getElementById("roomPrice");
 var income = parseInt(ants.innerHTML) * 1;
-
 
 var storedRooms = window.localStorage.getItem("rooms");
 var storedAnts = window.localStorage.getItem("ants");
 var storedCoins = window.localStorage.getItem("coins");
+var storedRoomPrice = window.localStorage.getItem("roomPrice");
+var storedAntPrice = window.localStorage.getItem("antPrice");
