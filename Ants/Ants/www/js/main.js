@@ -18,8 +18,7 @@ var app = {
         var buyAnt = document.getElementById("txtBuyAnts").value;
         var antFeedback = document.getElementById("antFeedback");
         var antPrice = document.getElementById("antPrice");
-        var maxAnts = rooms.innerHTML * 5;
-        var initAntCost = 50;
+        var maxAnts = rooms.innerHTML * 10;
         var currentAntPrice = parseInt(antPrice.innerHTML);
         var antCost = currentAntPrice * buyAnt;
         var newPop = parseInt(ants.innerHTML) + parseInt(buyAnt);
@@ -61,16 +60,17 @@ var app = {
             roomFeedback.innerHTML = "Enter Amount of rooms to buy";
 
         } else {
+
             // TODO *** Add a loop to increase room price, do the same for the ant price ***
-            if (roomCost > coins.innerHTML) {
-                    roomFeedback.innerHTML = "Not Enough Coins!";
-                } else {
-                    rooms.innerHTML = parseInt(rooms.innerHTML) + parseInt(buyRoom);
-                    coins.innerHTML -= roomCost;
-                    newCount = currentRoomPrice + (buyRoom * 10);
-                    roomPrice.innerHTML = newCount + " COINS";
-                    app.saveGame();
-                }
+                if (roomCost > coins.innerHTML) {
+                        roomFeedback.innerHTML = "Not Enough Coins!";
+                    } else {
+                        rooms.innerHTML = parseInt(rooms.innerHTML) + parseInt(buyRoom);
+                        coins.innerHTML -= roomCost;
+                        newCount = currentRoomPrice + (buyRoom * 100);
+                        roomPrice.innerHTML = newCount + " COINS";
+                        app.saveGame();
+                    }
             }
     },
 
@@ -115,9 +115,10 @@ var app = {
         document.getElementById("rooms").innerHTML = 1;
         document.getElementById("population").innerHTML = 0;
         document.getElementById("coins").innerHTML = 100;
-        document.getElementById("roomPrice").innerHTML = 500;
-        document.getElementById("antPrice").innerHTML = 50;
+        document.getElementById("roomPrice").innerHTML = 500 + " COINS";
+        document.getElementById("antPrice").innerHTML = 50 + " COINS";
         window.localStorage.clear();
+        app.saveGame();
     }
 
 
@@ -129,6 +130,7 @@ var coins = document.getElementById("coins");
 var initAntCost = document.getElementById("antPrice");
 var roomPrice = document.getElementById("roomPrice");
 var income = parseInt(ants.innerHTML) * 1;
+var numbers = /^[0-9]+$/;
 
 var storedRooms = window.localStorage.getItem("rooms");
 var storedAnts = window.localStorage.getItem("ants");

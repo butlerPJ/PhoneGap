@@ -121,11 +121,12 @@
         <script type="text/javascript">
             function loadUp() {
             if (localStorage.getItem("rooms") === null) {
-                document.getElementById("rooms").innerHTML = 1;
+                /*document.getElementById("rooms").innerHTML = 1;
                 document.getElementById("population").innerHTML = 0;
                 document.getElementById("coins").innerHTML = 100;
-                document.getElementById("roomPrice").innerHTML = 500;
-                document.getElementById("antPrice").innerHTML = 50;
+                document.getElementById("roomPrice").innerHTML = 500 + " COINS";
+                document.getElementById("antPrice").innerHTML = 50 + " COINS";*/
+                app.resetGame();
                 app.saveGame();
             } else {
                 app.loadGame();
