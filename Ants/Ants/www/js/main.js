@@ -24,26 +24,29 @@ var app = {
         var newPop = parseInt(ants.innerHTML) + parseInt(buyAnt);
         antFeedback.innerHTML = "";
         document.getElementById("txtBuyAnts").value = "";
+        if (buyAnt.match(numbers)) {
+            if (buyAnt === "") {
+                antFeedback.innerHTML = "Enter Amount of ants to buy";
 
-        if (buyAnt === "") {
-            antFeedback.innerHTML = "Enter Amount of ants to buy";
-
-        } else {
-            if (newPop > maxAnts) {
-                antFeedback.innerHTML = "Maximum number reached...Buy more rooms";
             } else {
-                if (antCost > coins.innerHTML) {
-                    antFeedback.innerHTML = "Not Enough Coins!";
+                if (newPop > maxAnts) {
+                    antFeedback.innerHTML = "Maximum number reached...Buy more rooms";
                 } else {
-                    ants.innerHTML = parseInt(ants.innerHTML) + parseInt(buyAnt);
-                    coins.innerHTML -= antCost;
-                    currentAntPrice = currentAntPrice + (buyAnt * 10);
-                    antPrice.innerHTML = currentAntPrice + " COINS";
-                    app.saveGame();
-                }
+                    if (antCost > coins.innerHTML) {
+                        antFeedback.innerHTML = "Not Enough Coins!";
+                    } else {
+                        ants.innerHTML = parseInt(ants.innerHTML) + parseInt(buyAnt);
+                        coins.innerHTML -= antCost;
+                        currentAntPrice = currentAntPrice + (buyAnt * 10);
+                        antPrice.innerHTML = currentAntPrice + " COINS";
+                        app.saveGame();
+                    }
 
+                }
             }
-        }
+        } else {
+            antFeedback.innerHTML = "Please enter a number...";
+    }
 
     },
 
@@ -55,23 +58,26 @@ var app = {
         var roomFeedback = document.getElementById("roomFeedback");
         document.getElementById("txtBuyRooms").value = "";
         roomFeedback.innerHTML = "";
+        if (buyRoom.match(numbers)) {
+            if (buyRoom === "") {
+                roomFeedback.innerHTML = "Enter Amount of rooms to buy";
 
-        if (buyRoom === "") {
-            roomFeedback.innerHTML = "Enter Amount of rooms to buy";
+            } else {
 
+                // TODO *** Add a loop to increase room price, do the same for the ant price ***
+                    if (roomCost > coins.innerHTML) {
+                            roomFeedback.innerHTML = "Not Enough Coins!";
+                        } else {
+                            rooms.innerHTML = parseInt(rooms.innerHTML) + parseInt(buyRoom);
+                            coins.innerHTML -= roomCost;
+                            newCount = currentRoomPrice + (buyRoom * 100);
+                            roomPrice.innerHTML = newCount + " COINS";
+                            app.saveGame();
+                        }
+                }
         } else {
-
-            // TODO *** Add a loop to increase room price, do the same for the ant price ***
-                if (roomCost > coins.innerHTML) {
-                        roomFeedback.innerHTML = "Not Enough Coins!";
-                    } else {
-                        rooms.innerHTML = parseInt(rooms.innerHTML) + parseInt(buyRoom);
-                        coins.innerHTML -= roomCost;
-                        newCount = currentRoomPrice + (buyRoom * 100);
-                        roomPrice.innerHTML = newCount + " COINS";
-                        app.saveGame();
-                    }
-            }
+            roomFeedback.innerHTML = "Please enter a number...";
+        }
     },
 
     addCoins: function() {
@@ -130,7 +136,7 @@ var coins = document.getElementById("coins");
 var initAntCost = document.getElementById("antPrice");
 var roomPrice = document.getElementById("roomPrice");
 var income = parseInt(ants.innerHTML) * 1;
-var numbers = /^[0-9]+$/;
+var numbers = "^[1-9][0-9]*$";
 
 var storedRooms = window.localStorage.getItem("rooms");
 var storedAnts = window.localStorage.getItem("ants");
